@@ -1,25 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    // tao tham chieu
+    this.inputElement = React.createRef();
+    this.inputElement2 = React.createRef();
+    
+    // --- dat breakpoint
+    // debugger;
+    // --- dat breakpoint
+    //vi du
+    // thuoc tinh current tro toi DOM, o day la input
+    // this.inputElement.current.focus();
+  }
+  // Lifecycle
+  // Mount: gan vao
+  // dam bao khi DOM duoc tao roi moi xu ly
+  componentDidMount(){
+    this.inputElement.current.focus();
+  }
+ 
   render() {
+    // gan tham chieu vao element thong qua thuoc tinh ref
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <form ref = {this.inputElement2}>
+          <input type = "text" ref = {this.inputElement}/>
+          <input type = "button" onClick = {this.resetForm} value = "reset"/>
+        </form>
       </div>
     );
   }
